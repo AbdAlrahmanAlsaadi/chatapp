@@ -35,6 +35,9 @@ class PrivateMessage implements ShouldBroadcast
             'updated_at' => $this->message->updated_at,
             'created_at' => $this->message->created_at,
             'user_id' => $this->message->user_id,
+            'media_path'=>$this->message->media_path,
+            'media_type'=>$this->message->media_type,
+
         ];
     }
 }
