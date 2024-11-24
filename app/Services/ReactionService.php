@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\conversation;
+use App\Models\Conversation;
 use App\Models\Reaction;
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;

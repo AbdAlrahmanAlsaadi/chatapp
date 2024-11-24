@@ -12,6 +12,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Log;
 class ChatService
 {
     public function sendMessageWithMedia(array $data)
@@ -53,7 +54,9 @@ class ChatService
 
         broadcast(new PrivateMessage($message))->toOthers();
         // broadcast(new PublicMessage($message))->toOthers();
-
+        Log::channel('telegram')->info('Image has been uploaded', [
+            'url' => url('/') . '/' . $destinationPath . '/' . $fileName
+        ]);
         return $message;
     }
 

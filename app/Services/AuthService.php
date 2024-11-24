@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Log;
 class AuthService
 {
     public function register(array $data)
@@ -64,7 +64,9 @@ class AuthService
 
         // إنشاء التوكن وإرجاعه مع معلومات المستخدم
         $token = $user->createToken('API Token')->plainTextToken;
-
+        Log::channel('telegram')->info('New user has logged in', [
+            'user' => $user
+        ]);
         return [
             'token' => $token,
             'user' => $user
